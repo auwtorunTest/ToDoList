@@ -30,7 +30,7 @@ body {
   border: red solid;
   margin-top: 60px;
   margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
+  font-size: 28px;    /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
 
@@ -60,6 +60,7 @@ body {
 }
 
 .newNotes {
+  position: fixed;
   width: 56px;
   height: 56px;
   background-color: red;
@@ -68,6 +69,25 @@ body {
   align-items: center;
   justify-content: center;
   margin: 16px;
+  bottom: 0;
+  right: 0;
+}
+
+.taskList {
+  border: red solid;
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px;    /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.taskList button {
+  margin-bottom: 10px;
+}
+
+.taskList ul {
+  list-style-type: none;
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
 }
 
 /* The Modal (background) */
@@ -75,21 +95,18 @@ body {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  right: 64px; bottom: 24px;
+  width: 400px;
+  height: 200px;
+  padding: 5px;
 }
 
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
-  margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 100%;
 }
 
 /* The Close Button */
