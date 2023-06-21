@@ -3,19 +3,19 @@ body {
 }
 
 .sidenav {
-  border: red solid;
   height: 100%;
-  width: 160px;
+  width: 320px;
   position: fixed;
-  z-index: 1;
+  margin-top: 48px;
+  top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: #111;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 64px;
 }
 
 .sidenav a {
-  padding: 6px 8px 6px 16px;
+  padding-left: 16px;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
@@ -27,17 +27,12 @@ body {
 }
 
 .main {
-  border: red solid;
-  margin-top: 60px;
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px;    /* Increased text to enable scrolling */
-  padding: 0px 10px;
+  margin-left: 320px; /* Same as the width of the sidenav */
 }
 
 .navbar {
-  border: red solid;
   overflow: hidden;
-  background-color: grey;
+  background-color: red;
   position: fixed;
   top: 0;
   left: 0;
@@ -73,21 +68,20 @@ body {
   right: 0;
 }
 
-.taskList {
-  border: red solid;
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px;    /* Increased text to enable scrolling */
+#taskList {
+  margin-top: 50px;
+  font-size: 28px;
   padding: 0px 10px;
 }
 
-.taskList button {
+#taskList button {
   margin-bottom: 10px;
 }
 
-.taskList ul {
+#taskList li {
   list-style-type: none;
-  padding: 0; /* Remove padding */
-  margin: 0; /* Remove margins */
+  padding: 0;
+  margin: 0; 
 }
 
 /* The Modal (background) */
@@ -95,17 +89,26 @@ body {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  right: 64px; bottom: 24px;
+  right: 54px; bottom: 0px;
   width: 400px;
-  height: 200px;
-  padding: 5px;
+  height: 400px;
 }
 
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
-  padding: 20px;
-  border: 1px solid #888;
+  padding: 20px 20px 20px 20px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 4px 29px -12px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 4px 29px -12px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 4px 29px -12px rgba(0,0,0,1);
+}
+
+#taskDescriptionInput {
+  height: 100px;
   width: 100%;
 }
 
@@ -124,7 +127,10 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+#emptyMessage {
+  height: 90vh;
+  font-size: 28px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0px;
 }
