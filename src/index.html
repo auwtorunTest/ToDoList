@@ -6,6 +6,7 @@
     <title>ToDoList</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/font.css">
+    <link rel="stylesheet" href="../style/scriptStyle.css">
 </head>
 <body>
     <div class="navbar">
@@ -38,14 +39,19 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>ToDo List</h2>
-      <input type="text" id="taskInput" placeholder="Tambahkan tugas...">
+      <input type="text" id="taskInput" placeholder="Masukkan tugas">
+      <select id="prioritySelect">
+        <option value="green">Biasa</option>
+        <option value="yellow">Penting</option>
+        <option value="red">Sangat Penting</option>
+      </select>
       <button onclick="addTask()">Tambah</button>
     </div>
   
     </div>
 
 
-    <script src="../js/script.js"></script>
+    <script src="../js/scriptTest.js"></script>
     <script src="../js/function.js"></script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+.task-priority-green {
+    height: 25px;
+    width: 25px;
+    outline: green  2px solid; 
+    border-radius: 50%;
+    display: inline-block;
+}
+  
+  .task-priority-yellow {
+    height: 25px;
+    width: 25px;
+    outline: yellow 2px solid;
+    border-radius: 50%;
+    display: inline-block;
+}
+  
+  .task-priority-red {
+    height: 25px;
+    width: 25px;
+    outline: red 2px solid;
+    border-radius: 50%;
+    display: inline-block;
+}
