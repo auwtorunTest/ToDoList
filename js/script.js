@@ -8,21 +8,33 @@ window.addEventListener("load", function () {
   renderTasks();
 });
 
+function getSelectedCategory() {
+  return categorySelect.value;
+}
+
 const taskInput = document.getElementById("taskInput");
 const prioritySelect = document.getElementById("prioritySelect");
+const taskDescriptionInput = document.getElementById("taskDescriptionInput")
 const taskList = document.getElementById("taskList");
+const categorySelect = document.getElementById("categorySelect");
 
 function addTask() {
     const taskText = taskInput.value;
     const priorityValue = prioritySelect.value;
+    const taskDescription = taskDescriptionInput.value;
+    const categoryFilter = categorySelect.value;
   
     if (taskText !== "") {
       tasks.push({
         text: taskText,
         priority: priorityValue,
+        description: taskDescription,
+        category: categoryFilter,
+        icon: getCategoryIcon(categoryFilter),
         completed: false,
       });
       taskInput.value = "";
+      taskDescriptionInput.value = "";
       saveTasksToLocalStorage();
       renderTasks();
     }
@@ -36,23 +48,52 @@ taskInput.addEventListener("keypress", function (event) {
 
 
 function renderTasks() {
+  const taskList = document.getElementById("taskList");
+  const emptyMessage = document.getElementById("emptyMessage");
+  const categoryFilter = document.getElementById("categoryFilter");
+
   taskList.innerHTML = "";
+
+  if (tasks.length === 0) {
+    emptyMessage.style.display = "flex"; // Tampilkan pesan "Tidak ada tugas"
+  } else {
+    emptyMessage.style.display = "none"; // Sembunyikan pesan "Tidak ada tugas"
+  }
+  
+  if (tasks.length === 0) {
+    emptyMessage.style.overflow = "hidden"; // Tampilkan pesan "Tidak ada tugas"
+  } else {
+    emptyMessage.style.overflow = "visible"; // Sembunyikan pesan "Tidak ada tugas"
+  }
+
+  if (tasks.length === 0) {
+    taskList.style.display = "none"; // Tampilkan pesan "Tidak ada tugas"
+  } else {
+    taskList.style.display = "block"; // Sembunyikan pesan "Tidak ada tugas"
+  }
 
   tasks.forEach(function (task, index) {
     const li = document.createElement("li");
-    const taskText = document.createElement("span");
     const taskPriority = document.createElement("span");
+    const taskText = document.createElement("span");
+    const taskDescription = document.createElement("p");
     const deleteButton = document.createElement("button");
     const editButton = document.createElement("button");
     const statusButton = document.createElement("button");
-
-    taskText.textContent = task.text;
-    li.appendChild(taskText);
+    const icon = document.createElement("i");
+          icon.className = task.icon;
+          li.appendChild(icon);
 
     taskPriority.textContent = getPriorityLabel(task.priority);
     taskPriority.classList.add("task-priority-" + task.priority); // Menambahkan kelas CSS sesuai dengan prioritas
     li.appendChild(taskPriority);
 
+    taskText.textContent = task.text;
+    li.appendChild(icon);
+    li.appendChild(taskText);
+
+    taskDescription.textContent = task.description; // Menambahkan deskripsi tugas
+    li.appendChild(taskDescription);
 
     deleteButton.textContent = "Hapus";
     deleteButton.addEventListener("click", function () {
@@ -71,6 +112,9 @@ function renderTasks() {
       toggleStatus(index);
     });
     li.appendChild(statusButton);
+
+    icon.className = task.icon; // Mengatur kelas ikon dengan properti 'icon' dari tugas
+    li.appendChild(icon); // Menambahkan elemen ikon ke dalam elemen <li>
 
     taskList.appendChild(li);
   });
@@ -113,3 +157,24 @@ function getPriorityLabel(priorityValue) {
 
   return "";
 }
+
+function getPriorityLabel(categoryFilter) {
+  if (categoryFilter === "personal") {
+    return "";
+  } else if (categoryFilter === "work") {
+    return "";
+  }
+
+  return "";
+}
+
+function getCategoryIcon(categoryFilter) {
+  switch (categoryFilter) {
+    case "work":
+      return "fa-solid fa-briefcase";
+    default:
+      return "fas fa-user";
+  }
+}
+
+
